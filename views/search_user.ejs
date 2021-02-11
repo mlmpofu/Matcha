@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../style.css" />
+
+  <meta charset="utf-8" />
+  <script type="text/javascript" src="../helpers/helper1.js"></script>
+  <title>Home</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Matcha</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/updateProfile">Update Profile</a></li>
+        <li  class="active"><a href="/search_user">Search users</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li><a href="/filter">Filter</a></li>
+        <li><a href="/userHistory">User History</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div>
+
+    <form class="form" action="/search_user" method="POST">
+      <h1>Pleaser enter user to search for</h1>
+      name: <input type="text" id="user_search" name="search_user_match" />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="find1" class="bg_modal">
+      <div class="modal-content">
+        <h1 id="con_display"></h1>
+        <form class="Connect" action="/connect" method="GET">
+          <button id="add_connect" onclick="test_page('find2')">Yes</button>
+        </form>
+        <button id="connect_no" onclick="Click_no('find1')">No</button>
+      </div>
+    </div>
+
+    <div id="find2" class="bg_modal2">
+      <div id="success_user" class="modal-content">
+        <h1 id="message2"></h1>
+        <button onclick="sent_connect('find2','find1')">Okay</button>
+      </div>
+    </div>
+
+    <div id="find3" class="bg_modal">
+      <div class="modal-content">
+        <h1 id="message"></h1>
+        <form class="Likes" action="/likes" method="GET">
+          <button id="Likes1" onclick="likes('find2',null),Click_no('find3')">Yes</button>
+        </form>
+        <button id="connect_no" onclick="Click_no('find3')">No</button>
+      </div>
+    </div>
+
+    <div id="find4" class="bg_modal">
+      <div class="modal-content">
+        <h1 id="Report_message"></h1>
+        <form class="Report" action="/block" method="GET">
+          <button id="Report2" onclick="likes('find2','find4'),Click_no('find4')">Yes</button>
+        </form>
+        <button id="connect_no" onclick="Click_no('find4')">No</button>
+      </div>
+    </div>
+
+    <div class="display_items">
+      <script>
+        function Ask_connect(value) {
+          var show_w = document.getElementById(value)
+          show_w.style.display = "flex";
+        }
+        function test_page(value) {
+          document.getElementById("message2").innerHTML = "A request to has been sent ";
+          var show_w = document.getElementById(value)
+          show_w.style.display = "flex";
+        }
+        function display_user(value, value2) {
+          var user = value;
+          if (value2 == "find4") {
+            document.getElementById("Report_message").innerHTML = "Would you like to block" + "[" + value + "]" + "?";
+          }
+          else
+            if (value2 == "find3") {
+              document.getElementById("message").innerHTML = "Would you like to like this profile?";
+          }
+          document.getElementById("con_display").innerHTML = "Would you like to send connect request to " + "[" + value + "]" + "?";
+        }
+        function sent_connect(value, value2) {
+          var show_w = document.getElementById(value)
+          var show_2 = document.getElementById(value2)
+          show_w.style.display = "none";
+          show_2.style.display = "none";
+        }
+        function likes(value, value2) {
+          if (value2 == 'find4') { document.getElementById("message2").innerHTML = "You have block this person"; }
+          else
+            document.getElementById("message2").innerHTML = "You liked this";
+          var show_w = document.getElementById(value)
+          show_w.style.display = "flex";
+          refresh_page();
+        }
+        function Click_no(value) {
+          var show_w = document.getElementById(value)
+          show_w.style.display = "none";
+        }
+
+        function disable_button(value)
+        {
+          if (value)
+          {
+              document.getElementById('Like_button').disabled = true;
+          }
+          $("#5").load('ajax/search_user.esj')
+        }
+        function star(value,value2)
+        {
+          var percent = Math.round((parseInt(value)/parseInt(value2)) * 5);     
+            for (k=1;k<= percent; k++)
+           {document.getElementById(k).className ="fa fa-star checked"} ;
+
+        }
+        function refresh_page()
+        {
+          window.location.reload();
+        }
+      </script>
+
+<% if (!data.x[0]) { %>
+  <h1></h1>
+  <%}
+  else { %>
+        <div class="profile22">
+            <div class="circle_pic">
+              <a href="<%= data.table_images[0].image_path %>"><img width=100px height="100px"
+                src="<%= data.table_images[0].image_path %>"></a>
+              </div>
+              <br>
+              <span style= "font-size: 120%;"class="heading">User Rating</span>
+              <span id ="1" class="fa fa-star"></span>
+              <span id = "2" class="fa fa-star"></span>
+              <span id = "3" class="fa fa-star"></span>
+              <span id = "4" class="fa fa-star"></span>
+              <span id = "5" class="fa fa-star"></span><span> (<%= data.likes %> out of <%= data.count_value %> total users rated )</span>
+              <script>star('<%= data.likes %>','<%= data.count_value %>')</script>
+            <h1> Name:<%= data.x[0].username%> </h1>
+            <h1> Age:<%= data.x[0].age%> </h1>
+            <h1>Present : <%= data.disable_likes %> </h1>
+            <h1> Bio:<%= data.x[0].bio%> </h1>
+            <h1> Last seen:<%= data.x[0].last_seen%> </h1> 
+            <button name="connect_click"
+            onclick="Ask_connect('find1'),display_user('<%= data.x[0].username%>',null)">Connect</button>
+            <button id= "Like_button" onclick="Ask_connect('find3'),display_user('<%= data.x[0].username%>','find3'),disable_button('<%= data.disable_likes %>')">Like</button>
+            <button onclick=" Ask_connect('find4'),display_user('<%= data.x[0].username%>','find4')">Block</button>
+            <!-- <button>Block</button><br> -->
+            Comment area<textarea></textarea>
+            <% for(k in  data.table_images) { %>
+              <div class="big_image">
+                <div class="pic_1">
+                  <a href="<%= data.table_images[k].image_path %>"><img width=200px height="200px"
+                    src="<%= data.table_images[k].image_path %>"></a>
+                  </div>
+                  <%} %>
+                </div>
+                <% }%>
+              </div>
+    </div>
+  </div>
+</body>
+
+</html>

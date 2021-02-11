@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <title>Chat-page</title>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js'></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        
+        <script type="text/javascript">
+
+        var server ="http://localhost:3000";
+            $(function () {
+                var socket = io.connect();
+                var $messageForm = $('#messageForm');
+                var $message = $('#message');
+                var $chat = $('#chat');
+                var $messageArea = $('#messageArea');
+                var $userFormArea = $('#userFormArea');
+                var $userForm = $('#userForm');
+                var $users = $('#users');
+                var $username = $('#username');
+
+
+                $messageForm.submit(function (e) {
+                    e.preventDefault();
+                    socket.emit('send_message', $message.val());
+                    $message.val('');
+                });
+
+                $.ajax({
+                    url: server + "/get_messages",
+                    method: "GET",
+                    success: function (response){
+                        // console.log(response);
+
+                        // //parse JSON to javascript object
+                        var data = JSON.parse(response);
+                        // for (var a = 0; a < data.length; a++){
+                        //     //display messages
+                            
+                        // }
+                        data.forEach(row => {
+                            if (data.user == socket.username){
+                                $chat.append('<div class="well"><strong>' + row.username + '</strong>:' + row.message + '</div>');
+                            }
+                        });
+                    }
+                });
+
+                socket.on('new_message', function(data) {
+                        $chat.append('<div class="well"><strong>'+data.user+'</strong>:' + data.msg + '</div>');
+                });
+
+                $userForm.submit(function (e) {
+                    e.preventDefault();
+                    socket.emit('new user', $username.val(), function(data) {
+                        if(data){
+                            $userFormArea.hide();
+                            $messageArea.show();
+                        }
+                    });
+                    $username.val('');
+                });
+                
+                socket.on('get_users', function(data){
+                    var html ='';
+                    for(i = 0; i < data.length; i++){
+                        html += '<li class="list-group-item">'+data[i]+'</li>';
+                    }
+                    $users.html(html);
+                })
+        });
+
+        </script>
+        <style>
+            body{
+                margin-top: 30px;
+                background-image: url("https://images.unsplash.com/photo-1489712310660-bbce44cc541d?ixlib=rb-1.2.1&auto=format&fit=crop&w=756&q=80") ;
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            .messageForm{
+                background-color: rgba(90, 30, 43, 0.452);
+            }
+            /* #messageArea{
+                display: none;
+            } */
+            .chat{
+                color: rgb(231, 233, 227);
+            }
+        </style>
+    </head>
+    <body>
+
+
+        <div class="container">
+            <div id="userFormArea" class="row">
+                <div class="col-md-12">
+                    <form id="userForm">
+                        <div class="form-group">
+                            <label>
+                                <h5>Usernames</h5>
+                            </label>
+                            <input class="form-control" id="username"><br>
+                            <input type="submit" class="btn btn-primary" value="Chat">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="messageArea" class="row">
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Online</h3>
+                        <ul class="list-group" id="users"></ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label>
+                                <h5>Message</h5>
+                            </label>
+                            <textarea class="form-control" id="message"></textarea><br>
+                            <input type="submit" class="btn btn-primary" value="send">
+                        </div>
+                    </form>
+                    <div class="chat" id="chat" >
+                     </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

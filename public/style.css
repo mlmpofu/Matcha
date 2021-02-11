@@ -1,0 +1,663 @@
+.loginForm {
+    width: 50%;
+    height: 75%;
+    text-align: center;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    background-color: white;
+    padding-top: 2%;
+}
+
+.registrationForm {
+    width: 50%;
+    height: 90%;
+    text-align: center;
+    position: relative;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    background-color: white;
+    padding-top: 2%;
+}
+
+
+
+body, html{
+    background-image: url("https://images.unsplash.com/photo-1489712310660-bbce44cc541d?ixlib=rb-1.2.1&auto=format&fit=crop&w=756&q=80") ;
+    height: 100%;
+
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.setProfile {
+    width: 50%;
+    height: 95%;
+    text-align: center;
+    position: relative;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.filterProfile {
+    width: 50%;
+    height: 120%;
+    text-align: center;
+    position: relative;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.filterInterests{
+    text-align: center;
+    margin-bottom: 30%;
+}
+
+.displayFilterTags{
+    width: 100%;
+    height: 50%;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+    display: table;
+}
+
+.FiltertagBlocks {
+    width: 31%;
+    background-color: #b9b9b9;
+    margin-top: 2%;
+    float: inherit;
+    border: 1px solid white;
+    border-radius: 2%;
+    word-wrap: break-word; 
+}
+
+.sort{
+    width: 7%;
+    height: 20%;
+    position: relative;
+    top: 65%;
+    left: 50%;
+    transform: translate(490%, 0%);
+    text-align: center;
+}
+
+.setProfile2 {
+    width: 50%;
+    height: 150%;
+    text-align: center;
+    position: relative;
+    top: 78%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+.setProfile3{
+    width: 45%;
+    height: 90%;
+    text-align: center;
+    position: relative;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.setProfile4 {
+    width: 50%;
+    height: 45%;
+    text-align: center;
+    position: relative;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.setProfilePic {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+.updateProfilePic {
+    width: 45%;
+    height: 85%;
+    text-align: center;
+    position: relative;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.history{
+    background-color: #b9b9b9;
+    text-align: center;
+    width: 20%;
+    height: 50%;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+    display: table;
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+}
+
+.profile {
+    width: 45%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 45%;
+    transform: translate(15%, -50%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.profilePic {
+    width: 28%;
+    height: auto;
+    position: fixed;
+    top: 6%;
+    left: 35%;
+    transform: translate(0%, 5%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    margin-bottom: 2%;
+}
+
+.images {
+    width: 95%;
+    height: 50%;
+    position: fixed;
+    top: 10%;
+    left: -12%;
+    transform: translate(15%, 60%);
+}
+
+.profile1 {
+    width: 45%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 55%;
+    transform: translate(-115%, -150%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.updateProfile {
+    width: 100%;
+    height: 60%;
+    text-align: center;
+    position: relative;
+    top: 37%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.updateProfile2 {
+    width: 100%;
+    height: 110%;
+    text-align: center;
+    position: relative;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+.updateProfile3{
+    width: 45%;
+    height: 140%;
+    text-align: center;
+    position: relative;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* border-radius: 3%; */
+    /* background-color: white; */
+    /* border: 1px solid gray; */
+}
+
+.updateProfile4 {
+    width: 100%;
+    height: 35%;
+    text-align: center;
+    position: relative;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.individualForms{
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.resetPassword {
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    padding: 2%;
+}
+
+.profileButton {
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, 280%);
+    width: 100%;
+}   
+
+.submitButton{
+    width: 100%;
+    margin-right: 20%;
+
+}
+
+.interests{
+    border-radius: 3%;
+    border: 1px solid gray;
+    top: -64%;
+    left: 130%;
+    transform: translate(-50%, -50%);
+}
+
+
+.displayTags {
+    width: 100%;
+    height: 50%;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+    display: table;
+}
+
+.tagBlocks {
+    width: 31%;
+    background-color: #b9b9b9;
+    margin-top: 2%;
+    float: inherit;
+    border: 1px solid white;
+    border-radius: 2%;
+    word-wrap: break-word; 
+}
+
+
+.topnav {
+    color: #f2f2f2;
+    text-align: right;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: rgb(128, 19, 0);
+    width: 80%;
+    top: -64%;
+    left: 140%;
+    transform: translate(25%, -130%);
+    height: 8%;
+}
+
+.image_display {
+    border-radius: 3%;
+    border: 1px solid gray;
+    width: 25%;
+    height: auto;
+    margin-top: 3%;
+}
+
+.completeProfile {
+    position: fixed;
+    top: 93%;
+    left: 50%;
+    transform: translate(-50%, 280%);
+    width: 100%;
+    margin-bottom: 15%;
+}
+
+.forgotPassword {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 280%);
+    width: 30%;
+}
+
+.userInfo1 {
+    position: unset;
+    top: 0%;
+    left: 50%;
+    transform: translate(21%, 55%);
+    width: 30%;
+    border: 1px solid grey;
+    border-radius: inherit;
+    width: 70%;
+}
+
+.userInfo2 {
+    position: unset;
+    top: 0%;
+    left: 50%;
+    transform: translate(21%, 90%);
+    width: 30%;
+    border: 1px solid grey;
+    border-radius: inherit;
+    width: 70%;
+}
+
+.userInfoTags {
+    width: 100%;
+    height: 25%;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+    display: table;
+}
+
+.bio {
+    position: fixed;
+    top: 10%;
+    left: 0%;
+    transform: translate(21%, 90%);
+    width: 30%;
+    height: 20%;
+    border: 1px solid grey;
+    border-radius: inherit;
+    width: 70%;
+}
+
+.userInfoImgdisplay {
+    border-radius: 3%;
+    border: 1px solid gray;
+    width: 30%;
+    height: auto;
+    margin-top: 3%;
+}
+
+.userImgdisplay {
+    transform: translate(21%, 155%);
+    width: 30%;
+    height: 20%;
+    width: 70%;
+}
+
+.errorMsg{
+    width: 100%;
+    background-color:darkred;
+    color: white;
+    text-align: center;
+}
+
+.getLocation {
+    width: 50%;
+    height: 25%;
+    text-align: center;
+    position: relative;
+    top: 45%;
+    left: 55%;
+    transform: translate(-60%, -150%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.updateLocation {
+    width: 100%;
+    height: 25%;
+    text-align: center;
+    position: relative;
+    top: 45%;
+    left: 55%;
+    transform: translate(-55%, -150%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+
+.dropbtn {
+    background-color: black;
+    color: gray;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content button {
+      border-color: #f1f1f1;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: bla;
+  }
+
+  .displayUsers {
+    border-radius: 0%;
+    width: 25%;
+    height: 250px;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+    display: table;
+    color: black;
+    border: 1px solid black;
+    border-radius: 2%;
+    background-color: #9e2e2e;
+    text-align: center;
+    font-size: medium;
+}
+
+.users_display {
+    border-radius: 3%;
+    border: 1px solid gray;
+    width: 40%;
+    margin-top: 3%;
+}
+
+.image_display {
+    border-radius: 3%;
+    border: 1px solid gray;
+    width: 25%;
+    height: 35%;
+    margin-top: 3%;
+}
+
+.bg_modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 1;
+}
+.bg_modal2{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    display: none;
+    
+ z-index: 1;
+}
+
+
+.modal-content
+{
+    width:500px; 
+    height: 200px;
+    background-color: white;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+}
+.big_img{
+    margin: 10px 50px;
+    position: relative;
+
+}
+.pic_1 img{
+    width: 230px;
+    padding: 5px;
+    float: left;
+    filter: grayscale(100%);
+    transition: 0.1s;
+    z-index: 0;
+    position: relative;
+}
+.pic_1 img:hover{
+    filter: grayscale(0%);
+}
+
+.profile22 {
+    width: 45%;
+    height: 80%;
+    text-align: center;
+    position: relative;
+    top: 45%;
+    left: 45%;
+    transform: translate(-43%, 20%);
+    border-radius: 3%;
+    border: 1px solid rgb(131, 130, 130);
+    background-color: white;
+}
+.circle_pic img
+{
+    top: 15%;
+    
+    /* transform: translate(-30%, 120%); */
+    border-radius: 50%;  
+}
+.checked {
+    color: orange;
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}

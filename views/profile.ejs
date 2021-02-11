@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../helpers/helper1.js"></script>
+    <title>Profile</title>
+  </head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Matcha</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <li><a href="/updateProfile">Update Profile</a></li>
+            <li><a href="/search_user">Search users</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/filter">Filter</a></li>
+            <li><a href="/userHistory">User History</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+  
+  <div class="profile">
+      <div class="userInfoTags">
+      <label>Interests</label>
+      <br/>
+    <% if (tags != null){
+        if (tags !== []) {
+          for (var j = 0; j < tags.length; j++) { %>
+            <div class="tagBlocks">
+             <p><%=tags[j].interests%></p>
+          </div>
+          <%   }} 
+     } %>
+      </div>
+
+      <div class="bio">
+      <label>Bio</label>
+      <br/>
+      <p><%=bio%></p>
+      </div>
+      <div class="userImgdisplay">
+        <% if (photos != null){
+        if (photos !== []) {
+          for (var j = 0; j < photos.length; j++) { %>
+            <a href="<%= photos[j].image_path %>"><img src="<%=photos[j].image_path%>" class="userInfoImgdisplay" id="<%=photos[j].img_id%>" alt="..." width="50" height="50"></a>
+          <%   }} 
+     } %>
+      </div>
+  </div>
+  <div class="profile1">
+    <% if (profile_picture != null){ %>
+        <label for="profilePic">Profile Picture</label>
+        <br/>
+        <img class="profilePic" src="<%=profile_picture%>" alt="...">
+      <% } %>
+
+    <div class="userInfo2">
+    <p>name: <%=name%></p>
+    <p>surname: <%=surname%></p>
+    <p>email: <%=email%></p>
+    <p>username: <%=username%></p>
+    <p>age: <%=age%></p>
+    <p>gender: <%=gender%></p>
+    <p>prefered gender: <%=pref_gender%></p>
+    </div>
+</div>
+</body>
+</html>

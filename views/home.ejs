@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css" />
+
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../helpers/helper1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Home</title>
+  </head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Matcha</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/updateProfile">Update Profile</a></li>
+        <li><a href="/search_user">Search users</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li><a href="/filter">Filter</a></li>
+        <li><a href="/userHistory">User History</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> <%=user%></a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div>
+    <div class="sort">
+      <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Sort
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+         <li> <form action="/sort/age" method="GET">
+                <button type="submit" class="btn btn-danger btn-sm my-4">age (Low-High)</button>
+              </form>
+        </li>
+
+        <li> <form action="/sort/ageDesc" method="GET">
+            <button type="submit" class="btn btn-danger btn-sm my-4">age (High-low)</button>
+          </form>
+        </li>
+
+          <li><form action="/sort/location" method="GET">
+            <button type="submit" class="btn btn-danger btn-sm my-4">Location (Low-High)</button>
+          </form>
+        </li>
+
+        <li><form action="/sort/locationDesc" method="GET">
+          <button type="submit" class="btn btn-danger btn-sm my-4">Location (High-low)</button>
+        </form>
+      </li>
+
+    <li><form action="/sort/popularity" method="GET">
+      <button type="submit" class="btn btn-danger btn-sm my-4">Popularity (Low-High)</button>
+    </form>
+  </li>
+
+  <li><form action="/sort/popularityDesc" method="GET">
+      <button type="submit" class="btn btn-danger btn-sm my-4">Popularity (High-low)</button>
+    </form>
+  </li>
+        </ul>
+      </div>
+      
+    </div>
+
+      <% if (userData != null){
+        if (userData !== []) {
+          for (var j = 0; j < userData.length; j++) { %>
+            <form action="/filter/<%=userData[j].username%>" id="userForm" method="get">
+              <div class="displayUsers">
+                <img src="<%=userData[j].image_path%>" class="users_display" id="<%=userData[j].id%>" alt="...">
+                <h3><%=userData[j].username%></h3>
+                <p>age: <%=userData[j].age%></p>
+                <p>gender: <%=userData[j].gender%></p>    
+              
+                <button type="submit" class="btn btn-danger btn-block my-4">View Profile</button>
+            </div>
+          </form>
+          <%   }} 
+     } %>  
+     
+  </div>
+</body>
+</html>

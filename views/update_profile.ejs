@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../helpers/helper1.js"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <title>Update Profile</title>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Matcha</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/updateProfile">Update Profile</a></li>
+            <li><a href="/search_user">Search users</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/filter">Filter</a></li>
+            <li><a href="/userHistory">User History</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> <%=username%></a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="errorMsg">
+        <p><%=msg%></p>
+      </div>
+
+      <div class="errorMsg">
+        <p><%=errMsg%></p>
+      </div>
+    
+      
+    <div class="updateProfilePic">
+      <form action="/updateProfile/profilePic" method="POST">
+    
+        <% if (profile_picture != null){ %>
+          <label for="profilePic">Profile Picture</label>
+          <br/>
+          <img class="profilePic" src="<%=profile_picture%>" alt="...">
+        
+        <% } %>
+         
+      <div class="images">
+        <p>Please upload an image using the upload form first</p>
+        <% if (photos != null){
+          if (photos !== []) {
+            for (var j = 0; j < photos.length; j++) { %>
+                <img src="<%=photos[j].image_path%>" class="image_display" id="<%=photos[j].img_id%>" alt="..." width="50" height="50">
+                <input type="radio" id="<%=photos[j].img_id%>"
+                 name="profilePic" value="<%=photos[j].img_id%>">
+            <%   }} 
+       } %>
+      </div>
+        
+          <div class="profileButton"> 
+            <button type="submit" class="btn btn-danger btn-block my-4">Set profile pic</button>
+          </div>
+        </form>
+        </div>
+        
+    <div class="updateProfile3">
+        <div class="individualForms">
+        <form class="text-center border border-light p-4" action="/updateProfile/name" method="POST">
+            <label>Name</label>
+            <br />
+            <input type="text" name="name" required class="form-control mb-3" placeholder="<%=name%>"/>
+            <br />
+            <button type="submit" class="btn btn-danger btn-block my-4">Update</button>
+        </form>
+        </div>
+
+    <br /> <br />
+
+        <div class="individualForms">
+        <form class="text-center border border-light p-4" action="/updateProfile/surname" method="POST">
+            <label>Surname</label>
+            <br />
+            <input type="text" name="surname" required class="form-control mb-4" placeholder="<%=surname%>"/>
+            <br />
+            <button type="submit" class="btn btn-danger btn-block my-4">Update</button>
+        </form>
+        </div>
+
+    <br /> <br />
+        <div class="individualForms">
+        <form class="text-center border border-light p-4" action="/updateProfile/username" method="POST">
+            <label>Username</label>
+            <br />
+            <input type="text" name="username" required class="form-control mb-4" placeholder="<%=username%>"/>
+            <br />
+            <button type="submit" class="btn btn-danger btn-block my-4">Update</button>
+        </form>
+        </div>
+
+    <br /> <br />
+        <div class="individualForms">
+        <form class="text-center border border-light p-4" action="/updateProfile/email" method="POST">
+            <label>Email</label>
+            <br />
+            <input type="email" name="email" required class="form-control mb-4" placeholder="<%=email%>"/>
+            <br />
+            <button type="submit" class="btn btn-danger btn-block my-4">Update</button>
+        </form>
+        </div>
+
+    <br /> <br />
+
+        <div class="individualForms">
+        <form class="text-center border border-light p-4" action="/updateProfile/password" method="POST">
+            <label>Password</label>
+            <br />
+            <input type="password" name="password" required min="8" class="form-control mb-4"/>
+            <br />
+
+            <label>Confirm Password</label>
+            <br />
+            <input type="password" name="conf_password" required min="8" class="form-control mb-4"/>
+            <button type="submit" class="btn btn-danger btn-block my-4">Update</button>
+            <br />
+        </form>
+        </div>
+
+    <div class="updateProfile">
+      <form class="text-center border border-light p-4" action="/updateProfile/userProfile" method="POST">
+      <label for="bio">Gender:</label>
+      <br />
+    <input type="radio" id="g_male" name="gender" value="male" required>
+    <label for="male">Male</label>
+
+    <input type="radio" id="g_female" name="gender" value="female" required>
+    <label for="female">Female</label>
+
+    <input type="radio" id="g_bisexual" name="gender" value="bisexual" required>
+    <label for="bisexual">Bisexual</label>
+
+    <hr />
+      <br />
+      <label for="pref_gender">Prefered Gender:</label>
+      <br />
+    <input type="radio" id="p_male" name="pref_gender" value="male" required>
+    <label for="male">Male</label>
+
+    <input type="radio" id="p_female" name="pref_gender" value="female" required>
+    <label for="female">Female</label>
+
+    <input type="radio" id="p_bisexual" name="pref_gender" value="bisexual" required>
+    <label for="bisexual">Bisexual</label>
+
+    <hr />
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" min="18" max="70" required>
+
+    <hr />
+      <br />
+    
+      <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea class="form-control" rows="5" id="bio" name="bio" required></textarea>
+      </div>
+      <br /><br /><br />
+      <div class="submitButton">
+        <button type="submit" class="btn btn-danger btn-block my-4">Update</button>
+      </div>
+      </form>
+    </div>
+
+      <hr />
+      <br />
+      <div class="updateLocation">
+        <label for="location">location</label> <br />
+        <br />
+        <form action="/location" method="POST">
+         <br/><br/>
+          <button type="submit" class="btn btn-danger btn-block my-4">
+            Update Location
+          </button>
+        </form>
+      </div>
+      <hr />
+      <br />
+      
+      <div class="updateProfile4">
+        <form action="/updateProfile/interests" method="POST"> 
+          <label for="interests">Interests</label>
+          <input type="text" name="interests" id="interests" class="form-control mb-3" required/>
+          <br/>
+          <div class="submitButton">
+            <button type="submit" class="btn btn-danger btn-block my-4">
+              Add Interest
+            </button>
+          </div>  
+        </form>
+
+        <div class="displayTags">
+            <% if (tags != null){
+              if (tags !== []) {
+                for (var j = 0; j < tags.length; j++) { %>
+                  <div class="tagBlocks">
+                   <p><%=tags[j].interests%></p>
+                    <form action="/updateProfile/deleteInterest" method="POST">
+                        <button name="deleteTag" value="<%=tags[j].id%>" type="submit">x</button>
+                    </form>
+                </div>
+                <%   }} 
+           } %>
+           
+          </div>
+  
+        </div>
+      
+      <hr />
+      <br /> 
+      
+      <div class="updateProfile2">
+        <form action="/uploads" enctype="multipart/form-data" method="POST"> 
+          <input type="file" name="image" accept="image/*" class="file_input" required/>
+          <br />
+          <div class="submitButton">
+            <button type="submit" class="btn btn-danger btn-block my-4">
+              Upload Photo
+            </button>
+            
+        </form>
+
+        <div class="row" id="rowPic" style="justify-content: left; margin-left: 4%;">
+            <% if (photos != null){
+              if (photos !== []) {
+                for (var j = 0; j < photos.length; j++) { %>
+                <div class="col-sm profil-gal">
+                  <a href="<%= photos[j].image_path %>"><img src="<%=photos[j].image_path%>" class="image_display" id="<%=photos[j].img_id%>" alt="..."></a>
+                    <form action="/updateProfile/delete" method="POST">
+                      <br/>
+                    <button name="deletebtn" value="<%=photos[j].img_id%>" type="submit">delete</button>
+                    </form>
+                        
+                </div>
+                <%   }} 
+           } %>
+        </div> 
+        </div>
+    
+  </body>
+</html>
+
+<script>
+  // function getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(showPosition);
+  //   } else {
+  //     x.innerHTML = "Geolocation is not supported by this browser.";
+  //   }
+  // }
+  // function showPosition(position) {
+  //       const lat = document.querySelector('#lat');
+  //       const lng = document.querySelector('#lng');
+  //       lat.value = position.coords.latitude;
+  //       lng.value = position.coords.longitude;
+  //   }
+
+
+
+</script>

@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../helpers/helper1.js"></script>
+    <title>Profile</title>
+  </head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Matcha</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <li><a href="/updateProfile">Update Profile</a></li>
+            <li><a href="/search_user">Search users</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/filter">Filter</a></li>
+            <li><a href="/userHistory">User History</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/profile"><span class="glyphicon glyphicon-user"></span> <Profile></a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+  
+  <div class="profile">
+      <div class="userInfoTags">
+      <label>Interests</label>
+      <br/>
+    <% if (tags != null){
+        if (tags !== []) {
+          for (var j = 0; j < tags.length; j++) { %>
+            <div class="tagBlocks">
+             <p><%=tags[j].interests%></p>
+          </div>
+          <%   }} 
+     } %>
+      </div>
+
+      <div class="bio">
+      <label>Bio</label>
+      <br/>
+      <p><%=bio%></p>
+      </div>
+      <div class="userImgdisplay">
+        <% if (photos != null){
+        if (photos !== []) {
+          for (var j = 0; j < photos.length; j++) { %>
+            <a href="<%= photos[j].image_path %>"><img src="<%=photos[j].image_path%>" class="userInfoImgdisplay" id="<%=photos[j].img_id%>" alt="..." width="50" height="50"></a>
+          <%   }} 
+     } %>
+<br/><br/>
+
+        <span style= "font-size: 120%;"class="heading">User Rating</span>
+        <span id ="1" class="fa fa-star"></span>
+        <span id = "2" class="fa fa-star"></span>
+        <span id = "3" class="fa fa-star"></span>
+        <span id = "4" class="fa fa-star"></span>
+        <span id = "5" class="fa fa-star"></span><span> (<%=likes %> out of <%=users%> total users rated )</span>
+        <script>star('<%=likes %>','<%=users%>')
+        function star(value,value2)
+            {
+                 var percent = Math.round((parseInt(value)/parseInt(value2)) * 5);     
+                   for (k=1;k<= percent; k++)
+                  {document.getElementById(k).className ="fa fa-star checked"} ;
+        
+            }
+        </script>
+
+        
+
+        <br/>
+        <form method="GET" action="/likes">
+        <button onclick="refresh_page()">Like</button>
+        </form>
+
+        <form method="GET" action="/connect">
+        <button >Connect</button>
+        </form>
+
+        <form method="GET" action="/block">
+        <button>Block</button><br>
+        </form>
+
+        <script>
+            function refresh_page()
+            {
+                window.location.reload();
+            }
+        </script>
+      </div>
+  </div>
+  <div class="profile1">
+    <% if (profile_picture != null){ %>
+        <label for="profilePic">Profile Picture</label>
+        <br/>
+        <img class="profilePic" src="<%=profile_picture%>" alt="...">
+      <% } %>
+
+    <div class="userInfo1">
+    <label>Name</label>
+    <p><%=name%></p>
+
+    <label>Surname</label>
+    <p><%=surname%></p>
+
+    <label>Username</label>
+    <p><%=username%></p>
+
+    <label>Age</label>
+    <p><%=age%></p>
+
+    <label>Gender</label>
+    <p><%=gender%></p>
+
+    <label>Prefered Gender</label>
+    <p><%=pref_gender%></p>
+
+    <label>location</label>
+    <p><%=location%></p>
+    </div>
+</div>
+
+</body>
+</html>

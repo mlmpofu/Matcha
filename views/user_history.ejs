@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <meta charset="utf-8" />
+    <title>history</title>
+  </head>
+
+  <body> 
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">Matcha</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <li><a href="/updateProfile">Update Profile</a></li>
+            <li><a href="/search_user">Search users</a></li>
+            <li><a href="/chat">Chat</a></li>
+            <li><a href="/filter">Filter</a></li>
+            <li class="active"><a href="/userHistory">User History</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+          <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+ 
+    <div class="history">
+        <h1>User History</h1>
+        <% if (history != null){
+          if (history !== []) {
+            for (var j = 0; j < history.length; j++) { %>
+                <br/>
+                <h3><%=history[j].viewed%></h3>
+                <form action="/userHistory/view" method="POST">
+                    <button name="viewProfile" value="<%=history[j].id%>" type="submit">view</button>
+                </form>
+            <%   }} 
+       } %>
+      </div>
+
+  </body>
+</html>
+
+
+

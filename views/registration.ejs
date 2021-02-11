@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel='stylesheet' type='text/css'  href="/style.css" />
+    <meta charset="utf-8" />
+    <title>Registration</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Matcha</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="registrationForm">
+      <form
+        class="text-center border border-light p-4"
+        action="/registration"
+        method="POST"
+      >
+        <label>Name</label>
+        <br />
+        <input type="text" name="name" class="form-control mb-3" />
+        <br />
+
+        <label>Surname</label>
+        <br />
+        <input
+          type="text"
+          name="surname"
+          required
+          class="form-control mb-4"
+        />
+        <br />
+
+        <label>Username</label>
+        <br />
+        <input
+          type="text"
+          name="username"
+          required
+          class="form-control mb-4"
+        />
+        <br />
+
+        <label>Email</label>
+        <br />
+        <input
+          type="email"
+          name="email"
+          required
+          class="form-control mb-4"
+        />
+        <br />
+
+        <label>Password</label>
+        <br />
+        <input
+          type="password"
+          name="password"
+          min="8"
+          required
+          class="form-control mb-4"
+        />
+        <br />
+
+        <label>Confirm Password</label>
+        <br />
+        <input
+          type="password"
+          name="conf_password"
+          min="8"
+          required
+          class="form-control mb-4"
+        />
+        <br />
+        <div class="submitButton">
+          <br /><br />
+          <button type="submit" class="btn btn-danger btn-block my-4">
+            Register
+          </button>
+          </div>
+        </form>
+      <div class='message'><%=msg%></div>
+    </div>
+  </body>
+</html>

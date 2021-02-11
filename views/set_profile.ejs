@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../helpers/helper1.js"></script>
+    <title>Setup Profile</title>
+  </head>
+
+  <body> 
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">Matcha</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/search_user">Search users</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <div class="errorMsg">
+    <p><%=msg%></p>
+  </div>
+
+  <div class="errorMsg">
+    <p><%=errMsg%></p>
+  </div>
+
+<div class="setProfilePic">
+  <form action="/setProfile/profilePic" method="POST">
+
+    <% if (profile_picture != null){ %>
+      <label for="profilePic">Profile Picture</label>
+      <br/>
+      <img class="profilePic" src="<%=profile_picture%>" alt="...">
+      
+    <% } %>
+     
+  <div class="images">
+    <p>Please upload an image using the upload form first</p>
+    <% if (photos != null){
+      if (photos !== []) {
+        for (var j = 0; j < photos.length; j++) { %>
+            <img src="<%=photos[j].image_path%>" class="image_display" id="<%=photos[j].img_id%>" alt="...">
+            <input type="radio" id="<%=photos[j].img_id%>"
+             name="profilePic" value="<%=photos[j].img_id%>">
+        <%   }} 
+   } %>
+  
+  </div>
+    
+      <div class="profileButton"> 
+        <button type="submit" class="btn btn-danger btn-block my-4">Set profile pic</button>
+        
+      </div>
+    </form>
+    </div>
+ 
+
+    <div class="setProfile">
+      <form
+      class="text-center border border-light p-4" action="/setProfile" method="POST">
+      <label for="bio">Gender:</label>
+      <br />
+    <input type="radio" id="male"
+     name="gender" value="male" required>
+    <label for="male">Male</label>
+
+    <input type="radio" id="female"
+     name="gender" value="female" required>
+    <label for="female">Female</label>
+
+    <input type="radio" id="bisexual"
+     name="gender" value="bisexual" required>
+    <label for="bisexual">Bisexual</label>
+
+    <hr />
+      <br />
+      
+   
+      <label for="pref_gender">Prefered Gender:</label>
+      <br />
+    <input type="radio" id="male"
+     name="pref_gender" value="male" required>
+    <label for="male">Male</label>
+
+    <input type="radio" id="female"
+     name="pref_gender" value="female" required>
+    <label for="female">Female</label>
+
+    <input type="radio" id="bisexual"
+     name="pref_gender" value="bisexual" required>
+    <label for="bisexual">Bisexual</label>
+
+    <hr />
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" min="18" max="70" required>
+
+    <hr />
+      <br />
+    
+      <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea class="form-control" rows="5" id="bio" name="bio" required></textarea>
+      </div>
+
+      <br /><br /><br />
+      <div class="submitButton">
+        <button type="submit" class="btn btn-danger btn-block my-4">
+          Submit
+        </button>
+      </div>
+      </form>
+    </div>
+
+    <br /><br /> <br /> <br /> 
+
+    <div class="getLocation">
+      <label for="location">location</label> <br />
+      <br />
+      <form action="/location" method="POST">
+        <br /><br />
+        <button type="submit" class="btn btn-danger btn-block my-4">
+          Submit Location
+        </button>
+      </form>
+    </div>
+    <br /> <br /> <br /> 
+      <br />
+      <div class="setProfile4">
+        <form action="/setProfile/interests" method="POST"> 
+          <label for="interests">Interests</label>
+          <input type="text" name="interests" id="interests" class="form-control mb-3" required/>
+          <br/>
+          <div class="submitButton">
+            <button type="submit" class="btn btn-danger btn-block my-4">
+              Add Interest
+            </button>
+          </div>  
+        </form>
+        <div class="displayTags">
+          <% if (tags != null){
+            if (tags !== []) {
+              for (var j = 0; j < tags.length; j++) { %>
+                <div class="tagBlocks">
+                 <p><%=tags[j].interests%></p>
+                  <form action="/setProfile/deleteInterest" method="POST">
+                      <button name="deleteTag" value="<%=tags[j].id%>" type="submit">x</button>
+                  </form>
+              </div>
+              <%   }} 
+         } %>
+         
+        </div>
+
+      </div>
+      
+      <br /> <br /> <br /> 
+      
+      <div class="setProfile2">
+        <form action="/uploads" enctype="multipart/form-data" method="POST"> 
+          <input type="file" name="image" accept="image/*" class="file_input" required/>
+          <br />
+          <div class="submitButton">
+            <button type="submit" class="btn btn-danger btn-block my-4">
+              Upload Photo
+            </button>
+            
+        </form>
+
+        <div class="row" id="rowPic" style="justify-content: left; margin-left: 4%;">
+          <% if (photos != null){
+            if (photos !== []) {
+              for (var j = 0; j < photos.length; j++) { %>
+              <div class="col-sm profil-gal">
+                <a href="<%= photos[j].image_path %>"><img src="<%=photos[j].image_path%>" class="image_display" id="<%=photos[j].img_id%>" alt="..."></a>
+                  <form action="/setProfile/delete" method="POST">
+                    <br/>
+                  <button name="deletebtn" value="<%=photos[j].img_id%>" type="submit">delete</button>
+                  </form>
+                      
+              </div>
+              <%   }} 
+         } %>
+      </div> 
+    </div>
+  </body>
+  
+  <div class="completeProfile">
+    <form action="/setProfile/complete" method="POST">
+      <button type="submit" name="profile complete" class="btn btn-success btn-block my-4">Profile Complete</button>
+    </form>
+  </div>
+</html>
+
